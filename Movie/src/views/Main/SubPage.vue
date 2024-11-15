@@ -1,7 +1,5 @@
 <template>
-  <div>
-    <router-link  to="/main">메인페이지로 가기</router-link>
- </div>
+ <div>sub페이지</div>
 </template>
 
 <script>

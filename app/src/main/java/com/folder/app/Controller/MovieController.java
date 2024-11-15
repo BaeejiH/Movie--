@@ -11,6 +11,7 @@ import com.folder.app.service.MovieService;
 
 
 
+
 @CrossOrigin(origins="http://localhost:8800")
 @RestController
 public class MovieController {
@@ -22,9 +23,21 @@ public class MovieController {
         return "Data............";
     }
 
-    @PostMapping("/main")
-    public ResultDTO findAll(){
+    @PostMapping("/movieList")
+    public ResultDTO MovieList(){
         return movieService.selectMovie();
     }
+
+    @GetMapping("/main")
+    public String Main() {
+        return new String();
+    }
+
+    @GetMapping("/Sub")
+    public String Sub() {
+        return new String();
+    }
+    
+    
     
 }

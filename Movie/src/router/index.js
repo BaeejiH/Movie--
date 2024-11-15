@@ -1,17 +1,30 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import SubPage from '@/views/Main/SubPage.vue'
 import MainPage from '../views/Main/MainPage.vue'
+import LoginPage from '@/views/login/LoginPage.vue'
+import MovieList from '@/views/Main/MovieList.vue'
 
 const routes = [
   {
     path: '/',
+    name: 'LoginPage',
+    component: LoginPage
+  },
+  {
+    path: '/Sub',
     name: 'SubPage',
-    component: SubPage
+    component: () => import('../views/Main/SubPage.vue')
   },
   {
     path: '/main',
     name: 'MainPage',
     component: () => import(/* webpackChunkName: "about" */ '../views/Main/MainPage.vue')
+  },
+
+  {
+    path: '/movieList',
+    name: 'MovieList',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main/MovieList.vue')
   },
 ]
 
