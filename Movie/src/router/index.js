@@ -3,7 +3,6 @@ import SubPage from '@/views/Main/SubPage.vue'
 import MainPage from '../views/Main/MainPage.vue'
 import LoginPage from '@/views/login/LoginPage.vue'
 import MovieList from '@/views/Main/MovieList.vue'
-
 const routes = [
   {
     path: '/',
@@ -31,6 +30,12 @@ const routes = [
     path: '/movieList/:movie_num',  
     name: 'MovieOne',
     component: () => import(/* webpackChunkName: "about" */ '../views/Main/MovieOne.vue')
+  },
+
+  {
+    path: '/user',  
+    name: 'UserList',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main/UserList.vue')
   },
 ]
 

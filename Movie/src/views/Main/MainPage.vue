@@ -1,6 +1,7 @@
 <template>
     <div>
-        <div><router-link to="/Sub">2.Sub 리스트</router-link></div>
+        <div><router-link to="/Sub">1.Sub 리스트</router-link></div>
+        <div><router-link to="/user">2.사용자 명단</router-link></div>
     <!-- Features Section -->
     <section id="features">
       <div class="container">
