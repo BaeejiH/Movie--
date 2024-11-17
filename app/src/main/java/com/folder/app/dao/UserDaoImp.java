@@ -17,4 +17,9 @@ public class UserDaoImp implements UserDao {
     public List<UserDTO>selectUser(){
         return userMapper.selectUser();
     }
+
+    @Override
+    public String getuserPwByuserName (String userName){
+        return userMapper.getuserPwByuserName(userName);
+    }
 }

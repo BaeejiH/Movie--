@@ -78,3 +78,8 @@
  .back-to-main:hover {
     color: #0056b3;
  }
+ .error-message {
+   color: red;
+   text-align: center;
+   margin-top: 10px;
+ }

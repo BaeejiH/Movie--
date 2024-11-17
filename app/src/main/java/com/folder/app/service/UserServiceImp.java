@@ -29,5 +29,19 @@ public class UserServiceImp implements UserService {
             }
        
         return resultDTO;
+    }   
+
+    @Override
+    public boolean authenticateUser(String userName, String userPw) {
+        // 데이터베이스에서 사용자 정보를 확인
+        String storedPassword = userDao.getuserPwByuserName(userName);
+        
+        if (storedPassword == null) {
+            // 사용자 이름이 존재하지 않으면 false 반환
+            return false;
+        } else {
+              // 비밀번호가 일치하면 true 반환
+         return storedPassword.equals(userPw);
+        }
     }
 }
