@@ -9,7 +9,7 @@ public class MovieDTO {
     private int movie_num;
     private String genre;
     private String title;
-    private String director;
+    private String directore;
     private String producer;
     private Date release_date;
     private int runtime;

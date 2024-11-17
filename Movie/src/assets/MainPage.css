@@ -1,0 +1,101 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+  
+  a:hover {
+    color: #0056b3;
+  }
+  
+  h2 {
+    font-size: 2.5em;
+    text-align: center;
+    color: #ff5722;
+  }
+  
+  h1 {
+    font-size: 2.2em;
+    color: #ff9800;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Features Section */
+  #features {
+    padding: 50px 20px;
+    background: #ffffff;
+    border-top: 5px solid #ff9800;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .movie-card {
+    background: #f9f9f9;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .movie-card img {
+    max-width: 100%;
+    border-radius: 5px;
+    margin-bottom: 15px;
+  }
+  
+  .movie-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* Banner Section */
+  #banner {
+    padding: 50px 20px;
+    background: #fffbf2;
+    border-top: 5px solid #ff5722;
+  }
+  
+  .banner-images {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .banner-item {
+    text-align: center;
+  }
+  
+  .banner-title {
+    font-size: 2.5em;
+    color: #ff5722;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Notice Section */
+  .notice {
+    background: #fff3e0;
+    padding: 20px;
+    margin-top: 30px;
+    border-left: 5px solid #ff5722;
+    font-size: 1.2em;
+  }
+  
+  .notice a {
+    font-weight: bold;
+    color: #e65100;
+  }
+  
+  .notice p {
+    margin: 0;
+    padding: 5px 0;
+  }

@@ -16,7 +16,7 @@
                </tr>
            </thead>
            <tbody>
-               <tr class="cursor-pointer" v-for="row in result" :key="row.movie_num">
+               <tr class="cursor-pointer" v-for="row in result" :key="row.movie_num" v-on:click="$event => href(row)">
                    <td>{{ row.movie_num }}</td>
                    <td>{{ row.genre }}</td>
                    <td style="color: blueviolet;">{{ row.title }}★{{ row.title.length }}★</td>
@@ -59,7 +59,14 @@ export default {
                .catch((error) => {
                    console.log(error)
                })
-       }
+       },
+
+       href(row) {
+            console.log(row)
+            store.commit('setMovie', row) // vuex에 저장함
+            this.$router.push({ name: 'MovieOne', params: row }) // 라우터 설정을 안해놓으면 넘기는 값이 너무 많아 라우터 경로를 번호만 받도록.
+        },
+
    },
 }
 </script>
