@@ -9,6 +9,8 @@ import com.folder.app.dao.UserDao;
 import com.folder.app.dto.ResultDTO;
 import com.folder.app.dto.UserDTO;
 
+import jakarta.servlet.http.HttpSession;
+
 @Service
 public class UserServiceImp implements UserService {
     private ResultDTO resultDTO;
@@ -31,7 +33,7 @@ public class UserServiceImp implements UserService {
         return resultDTO;
     }
     @Override
-    public ResultDTO authenticateUser(String userId, String userPw) {
+    public ResultDTO authenticateUser(String userId, String userPw, HttpSession session) {
         resultDTO = new ResultDTO();
         // userId를 사용하여 비밀번호 조회
         String storedPassword = userDao.getuserPwByuserId(userId);
@@ -51,6 +53,8 @@ public class UserServiceImp implements UserService {
             resultDTO.setResult("비밀번호가 틀렸습니다.");
             System.out.println("비밀번호가 틀렸습니다. 입력된 비밀번호: " + userPw + ", 저장된 비밀번호: " + storedPassword);
         } else {
+            session.setAttribute("userId", userId);
+            System.out.println("세션에 저장된 userId: " + session.getAttribute("userId"));
             resultDTO.setState(true);
             resultDTO.setResult("로그인 성공");
         }

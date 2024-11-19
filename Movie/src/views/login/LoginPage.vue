@@ -40,6 +40,8 @@ export default {
                 });
 
                 if (response.data.state) {
+                    // 로그인 성공 후 세션에 userId를 저장해야 mainPage에서 userId 값을 불러올 수 있음
+                    sessionStorage.setItem('userId', this.userId);
                     // 로그인 성공 시 메인 페이지로 이동
                     this.$router.push('/main');
                 } else {

@@ -1,7 +1,30 @@
 <template>
-    <div>
-        <div><router-link to="/Sub">1.Sub 리스트</router-link></div>
-        <div><router-link to="/user">2.사용자 명단</router-link></div>
+  <div>
+    <!--header Section-->
+    <header id="header">
+      <div class="container">
+        <div class="row aln-center">
+          <div class="col-6">
+            <h1>영화 추천 사이트</h1>
+          </div>
+          <div class="col-6 text-right">
+            <!-- 로그인 상태에 따른 아이디 표시 -->
+              <div class="user-info">
+                <span>안녕하세요, {{ getUserId() }}님!</span>
+              </div>
+            <!-- 네비게이션 바 -->
+            <nav>
+              <ul>
+                <li><router-link to="/">홈</router-link></li>
+                <li><router-link to="/movieList">영화 목록</router-link></li>
+                <li><router-link to="/about">사이트 소개</router-link></li>
+                <li><router-link to="/contact">연락처</router-link></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </header>
     <!-- Features Section -->
     <section id="features">
       <div class="container">
@@ -110,15 +133,20 @@
         자세한 사항은 <a href="#">영화대여규칙</a>을 참고해 주시길 바랍니다.
       </div>
     </section>
-    </div>
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'MainPage'
+  name: 'MainPage',
+  methods: {
+    getUserId() {
+      return sessionStorage.getItem('userId');
+    }
+  }
 }
 </script>
 
 <style>
- @import '@/assets/MainPage.css';
+@import '@/assets/MainPage.css';
 </style>
