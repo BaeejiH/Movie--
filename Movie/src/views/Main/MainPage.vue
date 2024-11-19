@@ -10,7 +10,10 @@
           <div class="col-6 text-right">
             <!-- 로그인 상태에 따른 아이디 표시 -->
               <div class="user-info">
-                <span>안녕하세요, {{ getUserId() }}님!</span>
+                <div>
+                  안녕하세요, {{ getUserId() }}님!
+                  <span><button @click="logout" class="btn btn-danger">로그아웃</button></span>
+                </div>
               </div>
             <!-- 네비게이션 바 -->
             <nav>
@@ -142,6 +145,19 @@ export default {
   methods: {
     getUserId() {
       return sessionStorage.getItem('userId');
+    },
+    logout(){
+      sessionStorage.removeItem('userId');
+      this.$router.push('/');
+    }
+  },
+  mounted(){
+    const userId = sessionStorage.getItem('userId');
+    console.log('세션에 있는 userId:'+userId);
+    if(userId){
+      console.log('로그인상태:'+userId+'님');
+    }else {
+      console.log('로그인되지 않은 상태');  
     }
   }
 }

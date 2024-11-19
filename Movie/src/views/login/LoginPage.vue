@@ -15,7 +15,6 @@
             </div>
             <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
         </form>
-        <router-link to="/main">메인페이지로 가기</router-link>
     </div>
 </template> 
 
