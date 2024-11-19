@@ -52,6 +52,12 @@ const routes = [
     name: 'UserList',
     component: () => import(/* webpackChunkName: "about" */ '../views/Main/UserList.vue')
   },
+
+  {
+    path: '/main/:userId',  
+    name: 'UserOne',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main/UserOne.vue')
+  },
 ]
 
 const router = createRouter({
