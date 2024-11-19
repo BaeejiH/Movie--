@@ -4,7 +4,7 @@
         <form @submit.prevent="Login" class="login-form">
             <div class="form-group">
                 <label for="userName">사용자 이름</label>
-                <input type="text" id="userName" v-model="userName" placeholder="아이디를 입력하세요" required />
+                <input type="text" id="userId" v-model="userId" placeholder="아이디를 입력하세요" required />
             </div>
             <div class="form-group">
                 <label for="userPw">비밀번호</label>
@@ -26,7 +26,7 @@ export default {
     name: 'LoginPage',
     data() {
         return {
-            userName: '',
+            userId: '',
             userPw: '',
             errorMessage: '',
         }
@@ -34,8 +34,8 @@ export default {
     methods: {
         async Login() {
             try {
-                const response = await axios.post('http://localhost:8080/', {
-                    userName: this.userName,
+                const response = await axios.post('http://localhost:8080/api/login', {
+                    userId: this.userId,
                     userPw: this.userPw,
                 });
 
@@ -45,7 +45,7 @@ export default {
                 } else {
                     // 로그인 실패 시 에러 메시지 표시
                     this.errorMessage = response.data.message || '로그인 실패';
-                    console.log(response)
+                    console.log(response.data)
                 }
             } catch (error) {
                 console.error('Login error', error);

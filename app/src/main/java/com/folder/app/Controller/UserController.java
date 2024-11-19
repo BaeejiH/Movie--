@@ -11,29 +11,23 @@ import com.folder.app.dto.UserLoginDTO;
 import com.folder.app.service.UserService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:8800")
 public class UserController {
     @Autowired
     UserService userService;
 
     // 사용자 명단
     @PostMapping("/user")    
-@CrossOrigin(origins = "http://localhost:8800")
     public ResultDTO selectUser() {
         return userService.selectUser();
     }
 
     // 사용자 로그인
-    @PostMapping("/")   
-    @CrossOrigin(origins = "http://localhost:8800")
+    @PostMapping("/api/login")   
     public ResultDTO checkId(@RequestBody UserLoginDTO loginDTO) {
-        boolean isAuthenticated = userService.authenticateUser(loginDTO.getUserId(), loginDTO.getUserPw());
+        // authenticateUser 메소드는 이제 ResultDTO를 반환하므로, 그대로 그 반환값을 사용.
+        ResultDTO resultDTO = userService.authenticateUser(loginDTO.getUserId(), loginDTO.getUserPw());
 
-        if (isAuthenticated) {
-            return new ResultDTO(true, "로그인 성공", null);
-        } else {
-            return new ResultDTO(false, "로그인 실패", null);
-        }
-
+        return resultDTO;  // 로그인 결과 그대로 반환
     }
-
 }
