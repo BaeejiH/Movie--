@@ -1,6 +1,7 @@
 <template>
     <div class="container mt-3">
        <h1 class="display-1 text-center">영화 목록</h1>
+       <router-link to="AddMovie">대여영화 추가</router-link>
        <table class="table table-hover mt-3">
            <thead class="table-dark">
                <tr>
@@ -37,6 +38,7 @@
 <script>
 import axios from 'axios';
 import store from '@/store';
+import router from '@/router';
 export default {
    name: 'MovieList',
    data() {

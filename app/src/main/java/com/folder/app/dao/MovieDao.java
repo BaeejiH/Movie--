@@ -5,5 +5,7 @@ import java.util.List;
 import com.folder.app.dto.MovieDTO;
 
 public interface MovieDao {
-      public List<MovieDTO>selectMovie();
+      List<MovieDTO>selectMovie();
+
+      int insertMovie (MovieDTO movieDTO);
 }

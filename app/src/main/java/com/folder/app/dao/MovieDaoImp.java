@@ -17,4 +17,10 @@ public class MovieDaoImp implements MovieDao {
       public List<MovieDTO>selectMovie(){
         return movieMapper.selectMovie();
     }
+
+    @Override
+    public int insertMovie(MovieDTO movieDTO){
+      
+      return movieMapper.insertMovie(movieDTO);
+    }
 }

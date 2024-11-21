@@ -58,6 +58,11 @@ const routes = [
     name: 'UserOne',
     component: () => import(/* webpackChunkName: "about" */ '../views/Main/UserOne.vue')
   },
+  {
+    path: '/AddMovie',  
+    name: 'AddMovie',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main/AddMovie.vue')
+  },
 ]
 
 const router = createRouter({
