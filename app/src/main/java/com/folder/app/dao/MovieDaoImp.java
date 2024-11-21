@@ -19,8 +19,12 @@ public class MovieDaoImp implements MovieDao {
     }
 
     @Override
-    public int insertMovie(MovieDTO movieDTO){
-      
+    public int insertMovie(MovieDTO movieDTO){   
       return movieMapper.insertMovie(movieDTO);
+    }
+
+    @Override
+    public int deleteMovie(int movie_num){
+      return  movieMapper.deleteMovie(movie_num);
     }
 }

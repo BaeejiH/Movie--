@@ -39,17 +39,35 @@
                 <th class="movie-label">bcode</th>
                 <td>{{ movie.bcode }}</td>
             </tr>
+
+            <button @click="deleteMovie(movie.movie_num)" class="btn btn-danger">영화 삭제</button>
         </table>
     </div>
 </template>
 
 <script>
 import store from '@/store';
+import axios from 'axios';
 export default {
-    name:'MovieOne',
+    name: 'MovieOne',
     computed: {
         movie() {
             return this.$store.state.selectMovie;
+        }     
+    },
+    methods:{
+        deleteMovie(movie_num) {
+            if (confirm("정말로 삭제하시겠습니까?")) {
+                axios.delete(`http://localhost:8080/movieList/${movie_num}`)// axios.delete ->서버에서 리소스를 삭제할때 사용, RestfulApi에서 delete 요청을 보낼때
+                    .then(response => {
+                        alert("영화가 삭제되었습니다.");
+                        this.$router.push('/movieList'); 
+                    })
+                    .catch(error => {
+                        alert("영화가 삭제되지 않았습니다.");
+                        console.error("Error deleting movie:", error);
+                    });
+            }
         }
     }
 }
@@ -80,7 +98,8 @@ export default {
     margin-top: 20px;
 }
 
-.movie-table th, .movie-table td {
+.movie-table th,
+.movie-table td {
     padding: 12px 15px;
     text-align: left;
     border-bottom: 1px solid #ddd;

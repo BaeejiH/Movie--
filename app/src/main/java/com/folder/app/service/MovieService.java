@@ -7,4 +7,6 @@ public interface MovieService {
   public ResultDTO selectMovie();
 
   public ResultDTO AddMovie(MovieDTO movieDTO);
+
+  public ResultDTO deleteMovie(int movie_num);
 }

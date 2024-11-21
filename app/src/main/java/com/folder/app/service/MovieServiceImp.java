@@ -54,5 +54,27 @@ public class MovieServiceImp implements MovieService {
         return rDto;
     }
 
+    @Override
+    public ResultDTO deleteMovie(int movie_num){
+        rDto = new ResultDTO();
+        try {
+            int result = movieDao.deleteMovie(movie_num);
+
+            System.out.println("삭제XXXXXXXXXX:"+result);
+
+            if(result>0){
+                rDto.setState(true);
+                rDto.setMessage("영화제거 성공");
+            }else{
+                rDto.setState(false);
+                rDto.setMessage("영화제거 실패");
+            }
+        } catch (Exception e) {
+            rDto.setState(false);
+            rDto.setMessage("Error:"+e.getMessage());
+        }
+        return rDto;
+    }
+
 
 }

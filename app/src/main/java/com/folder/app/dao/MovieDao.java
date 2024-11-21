@@ -8,4 +8,5 @@ public interface MovieDao {
       List<MovieDTO>selectMovie();
 
       int insertMovie (MovieDTO movieDTO);
+      int deleteMovie (int movie_num);
 }
