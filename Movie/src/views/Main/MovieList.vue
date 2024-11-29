@@ -1,6 +1,8 @@
 <template>
+    
     <div class="container mt-3">
-       <h1 class="display-1 text-center">영화 목록</h1>
+        <h1 class="display-1 text-center">영화 목록</h1>
+        <component :is="layout"></component>
        <router-link to="AddMovie">대여영화 추가</router-link>
        <table class="table table-hover mt-3">
            <thead class="table-dark">
@@ -39,6 +41,7 @@
 import axios from 'axios';
 import store from '@/store';
 import router from '@/router';
+import LayOutMain from './LayOutMain.vue';
 export default {
    name: 'MovieList',
    data() {
@@ -50,6 +53,11 @@ export default {
        this.getDB()
        console.log(store)
    },
+   computed:{
+    layout(){
+      return this.$route.meta.layout
+    }
+  },
    methods: {
        getDB() {
            axios

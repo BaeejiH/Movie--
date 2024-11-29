@@ -1,8 +1,10 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import LayOutMain from '@/views/Main/LayOutMain.vue'
 import SubPage from '@/views/Main/SubPage.vue'
 import MainPage from '../views/Main/MainPage.vue'
 import LoginPage from '@/views/login/LoginPage.vue'
 import MovieList from '@/views/Main/MovieList.vue'
+
 const routes = [
   {
     path: '/api/login', // 이동할 페이지의 경로,로그인 상태 확인 후 접근 가능한 경로.
@@ -27,24 +29,28 @@ const routes = [
   {
     path: '/Sub',
     name: 'SubPage',
-    component: () => import('../views/Main/SubPage.vue')
+    component: () => import('../views/Main/SubPage.vue'),
+    meta: { layout: LayOutMain } 
   },
   {
     path: '/main',
     name: 'MainPage',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Main/MainPage.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main/MainPage.vue'),
+    meta: { layout: LayOutMain } 
   },
 
   {
     path: '/movieList',
     name: 'MovieList',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Main/MovieList.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main/MovieList.vue'),
+    meta: { layout: LayOutMain } 
   },
 
   {
     path: '/movieList/:movie_num',  
     name: 'MovieOne',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Main/MovieOne.vue')
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main/MovieOne.vue'),
+    meta: { layout: LayOutMain } 
   },
 
   {

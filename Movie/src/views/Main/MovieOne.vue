@@ -1,6 +1,7 @@
 <template>
     <div class="movie-detail">
         <h1 class="title">영화 상세보기</h1>
+        <component :is="layout"></component>
         <form @submit.prevent="updateMovie">
             <table class="movie-table">
                 <tr>
@@ -50,12 +51,18 @@
 <script>
 import store from '@/store';
 import axios from 'axios';
+import LayOutMain from './LayOutMain.vue';
 export default {
     name: 'MovieOne',
     computed: {
         movie() {
             return this.$store.state.selectMovie;
+        },
+        
+        layout() {
+            return this.$route.meta.layout
         }
+
     },
     methods: {
         deleteMovie(movie_num) {
@@ -82,7 +89,7 @@ export default {
                     alert("영화 정보를 수정하는 데 실패했습니다.");
                     console.error("Error updating movie:", error);
                 });
-        }
+        },
     },
 
 }
