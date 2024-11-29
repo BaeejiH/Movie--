@@ -6,12 +6,14 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.folder.app.dto.MovieDTO;
 import com.folder.app.dto.ResultDTO;
 import com.folder.app.service.MovieService;
+
 
 @CrossOrigin(origins = "http://localhost:8800")
 @RestController
@@ -60,6 +62,18 @@ public class MovieController {
     public ResultDTO deleteMovie(@PathVariable int movie_num) {
         ResultDTO result = movieService.deleteMovie(movie_num);
         return result;
+    }
+
+    @PutMapping("movieList/{movie_num}")
+    public ResultDTO updateMovie(@PathVariable int movie_num, @RequestBody MovieDTO movieDTO) {
+        try {
+            movieDTO.setMovie_num(movie_num); // URL에서 받은 movie_num을 movieDTO에 설정, @pathVariable은 url경로에서 변수를 바인딩 해주기 때문에 같이 써야함.
+            movieService.updateMovie(movieDTO); // 영화 수정 서비스 호출
+    
+            return new ResultDTO(true, "영화 수정 성공");
+        } catch (Exception e) {
+            return new ResultDTO(false, "영화 수정 실패");
+        }
     }
 }
 

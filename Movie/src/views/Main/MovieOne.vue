@@ -1,47 +1,49 @@
 <template>
     <div class="movie-detail">
         <h1 class="title">영화 상세보기</h1>
+        <form @submit.prevent="updateMovie">
+            <table class="movie-table">
+                <tr>
+                    <th class="movie-label">번호</th>
+                    <td><input type="number" v-model="movie.movie_num"></td>
+                </tr>
+                <tr>
+                    <th class="movie-label">장르</th>
+                    <td><input type="text" v-model="movie.genre"></td>
+                </tr>
+                <tr>
+                    <th class="movie-label">제목</th>
+                    <td><input type="text" v-model="movie.title"></td>
+                </tr>
+                <tr>
+                    <th class="movie-label">감독</th>
+                    <td><input type="text" v-model="movie.directore"></td>
+                </tr>
+                <tr>
+                    <th class="movie-label">배급사</th>
+                    <td><input type="text" v-model="movie.producer"></td>
+                </tr>
+                <tr>
+                    <th class="movie-label">개봉일</th>
+                    <td><input type="datetime" v-model="movie.release_date"></td>
+                </tr>
+                <tr>
+                    <th class="movie-label">상영시간</th>
+                    <td><input type="number" v-model="movie.runtime"></td>
+                </tr>
+                <tr>
+                    <th class="movie-label">줄거리</th>
+                    <td><textarea type="text" v-model="movie.description"></textarea></td>
+                </tr>
+                <tr>
+                    <th class="movie-label">bcode</th>
+                    <td><input type="number" v-model="movie.bcode"></td>
+                </tr>
 
-        <table class="movie-table">
-            <tr>
-                <th class="movie-label">번호</th>
-                <td>{{ movie.movie_num }}</td>
-            </tr>
-            <tr>
-                <th class="movie-label">장르</th>
-                <td>{{ movie.genre }}</td>
-            </tr>
-            <tr>
-                <th class="movie-label">제목</th>
-                <td>{{ movie.title }}</td>
-            </tr>
-            <tr>
-                <th class="movie-label">감독</th>
-                <td>{{ movie.directore }}</td>
-            </tr>
-            <tr>
-                <th class="movie-label">배급사</th>
-                <td>{{ movie.producer }}</td>
-            </tr>
-            <tr>
-                <th class="movie-label">개봉일</th>
-                <td>{{ movie.release_date }}</td>
-            </tr>
-            <tr>
-                <th class="movie-label">상영시간</th>
-                <td>{{ movie.runtime }}</td>
-            </tr>
-            <tr>
-                <th class="movie-label">줄거리</th>
-                <td>{{ movie.description }}</td>
-            </tr>
-            <tr>
-                <th class="movie-label">bcode</th>
-                <td>{{ movie.bcode }}</td>
-            </tr>
-
-            <button @click="deleteMovie(movie.movie_num)" class="btn btn-danger">영화 삭제</button>
-        </table>
+                <button @click="deleteMovie(movie.movie_num)" class="btn btn-danger">영화 삭제</button>
+                <button @click="updateMovie(movie.movie_num)" class="btn btn-danger">수정</button>
+            </table>
+        </form>
     </div>
 </template>
 
@@ -53,23 +55,36 @@ export default {
     computed: {
         movie() {
             return this.$store.state.selectMovie;
-        }     
+        }
     },
-    methods:{
+    methods: {
         deleteMovie(movie_num) {
             if (confirm("정말로 삭제하시겠습니까?")) {
                 axios.delete(`http://localhost:8080/movieList/${movie_num}`)// axios.delete ->서버에서 리소스를 삭제할때 사용, RestfulApi에서 delete 요청을 보낼때
                     .then(response => {
                         alert("영화가 삭제되었습니다.");
-                        this.$router.push('/movieList'); 
+                        this.$router.push('/movieList');
                     })
                     .catch(error => {
                         alert("영화가 삭제되지 않았습니다.");
                         console.error("Error deleting movie:", error);
                     });
             }
+        },
+        updateMovie() {
+            axios.put(`http://localhost:8080/movieList/${this.movie.movie_num}`, this.movie)
+                .then(response => {
+                    alert("영화 정보가 수정되었습니다.");
+                    this.$store.commit('UPDATE_MOVIE', this.movie); // Vuex 상태 업데이트
+                    this.$router.push('/movieList'); // 목록 페이지로 이동
+                })
+                .catch(error => {
+                    alert("영화 정보를 수정하는 데 실패했습니다.");
+                    console.error("Error updating movie:", error);
+                });
         }
-    }
+    },
+
 }
 </script>
 

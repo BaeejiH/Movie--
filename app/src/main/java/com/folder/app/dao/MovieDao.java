@@ -9,4 +9,5 @@ public interface MovieDao {
 
       int insertMovie (MovieDTO movieDTO);
       int deleteMovie (int movie_num);
+      int updateMovie(MovieDTO movieDTO);
 }
