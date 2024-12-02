@@ -16,7 +16,7 @@
                 <li><router-link to="/main">메인</router-link></li>
                 <li><router-link to="/user">사용자명단</router-link></li>
                 <li><router-link to="/movieList">영화 목록</router-link></li>
-                <li><router-link to="/about">사이트 소개</router-link></li>
+                <li><router-link to="/cart">영화 장바구니</router-link></li>
                 <li><router-link to="/contact">연락처</router-link></li>
               </ul>
             </nav>

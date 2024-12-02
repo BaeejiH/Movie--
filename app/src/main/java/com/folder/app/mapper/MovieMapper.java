@@ -37,4 +37,6 @@ public interface MovieMapper {
                "    bcode = #{bcode} " +
              "WHERE movie_num = #{movie_num}")
     int updateMovie(MovieDTO movieDTO);
+
+
 }

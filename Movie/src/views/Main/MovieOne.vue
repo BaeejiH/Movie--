@@ -1,7 +1,9 @@
 <template>
+    <div>
+    <component :is="layout"></component>
     <div class="movie-detail">
+        
         <h1 class="title">영화 상세보기</h1>
-        <component :is="layout"></component>
         <form @submit.prevent="updateMovie">
             <table class="movie-table">
                 <tr>
@@ -45,6 +47,7 @@
                 <button @click="updateMovie(movie.movie_num)" class="btn btn-danger">수정</button>
             </table>
         </form>
+    </div>
     </div>
 </template>
 

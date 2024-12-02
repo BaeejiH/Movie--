@@ -6,7 +6,8 @@ const store = createStore({
     state() {
         return {
             user: {}, // 사용자 정보 상태
-            selectMovie: {}
+            selectMovie: {},
+            cart: {} // 장바구니
         }
     },
     // 상태를 변경하는 뮤테이션
@@ -21,6 +22,18 @@ const store = createStore({
         setUserId(state, userId) {
             state.userId = userId; // userId를 상태에 저장
         },
+        addToCart(state, movie) {
+            const CartCheck = state.cart.some((item) => item.movie_num === movie.movie_num);
+            if (!CartCheck) {
+                state.cart.push(movie);
+            }
+        },
+        removeFromCart(state, movie_num) {
+            state.cart = state.cart.filter((item) => item.movie_num !== movie_num);
+        },
+    },
+    getters:{
+        cartItems: (state) => state.cart,
     },
     // 비동기 작업을 처리하는 액션
     actions: {

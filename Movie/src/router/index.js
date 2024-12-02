@@ -69,6 +69,11 @@ const routes = [
     name: 'AddMovie',
     component: () => import(/* webpackChunkName: "about" */ '../views/Main/AddMovie.vue')
   },
+  {
+    path: '/cart',  
+    name: 'UserCart',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Main/UserCart.vue')
+  },
 ]
 
 const router = createRouter({

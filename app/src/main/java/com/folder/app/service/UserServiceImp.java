@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.folder.app.dao.UserDao;
+import com.folder.app.dto.BorrowDTO;
 import com.folder.app.dto.ResultDTO;
 import com.folder.app.dto.UserDTO;
 
@@ -32,6 +33,7 @@ public class UserServiceImp implements UserService {
 
         return resultDTO;
     }
+
     @Override
     public ResultDTO authenticateUser(String userId, String userPw, HttpSession session) {
         resultDTO = new ResultDTO();
@@ -62,5 +64,19 @@ public class UserServiceImp implements UserService {
         return resultDTO;
     }
 
+    @Override
+    public ResultDTO selectBorrow() {
+        resultDTO = new ResultDTO();
+        List<BorrowDTO> borrowList = userDao.selectBorrow();
+        System.out.println("borrowList: " + borrowList); // 결과 로깅
+        if (borrowList != null) {
+            resultDTO.setState(true);
+            resultDTO.setResult(borrowList);
+        } else {
+            resultDTO.setState(false);
+        }
+
+        return resultDTO;
+    }
     
 }
